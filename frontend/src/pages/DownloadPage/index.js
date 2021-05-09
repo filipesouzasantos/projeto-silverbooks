@@ -54,7 +54,7 @@ function DownloadPage({ match }) {
                                     </div>
                                 </header>
                                 <footer>
-                                    <a href={book.bookLink} target="_blank">
+                                    <a href={book.bookLink} target="_blank" rel="noopener noreferrer">
                                         <input type='button' id='btn-download' value='Download' />
                                     </a>
 

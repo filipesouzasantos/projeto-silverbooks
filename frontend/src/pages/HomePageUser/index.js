@@ -8,7 +8,7 @@ import Book from '../../components/Book';
 import Filter from '../../components/Filter';
 import SearchBar from '../../components/SearchBar';
 
-import NotFoundBook from '../../assets/images/notFoundBook.png';
+//import NotFoundBook from '../../assets/images/notFoundBook.png';
 import BtnDownload from '../../assets/images/icons/BtnDownload.png';
 
 import './styles.css';

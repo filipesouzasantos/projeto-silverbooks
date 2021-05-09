@@ -1,5 +1,6 @@
 const RouteBook = require('./routes/RouteBook');
-const RouteUser = require('./routes/RoutesUser')
+const RouteUser = require('./routes/RoutesUser');
+const PORT = process.env.PORT || 3001;
 const express =require('express');
 
 const cors = require('cors');
@@ -19,5 +20,5 @@ server.use('/user',RouteUser);
 
 
 
-server.listen('3001',()=>console.log('connect...'));
+server.listen(PORT,()=>console.log('connect...'));
 

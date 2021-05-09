@@ -1,0 +1,146 @@
+#login-page{
+    
+    width: 100vw;
+    height: 100vh;
+    
+  }
+.login-error{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 4rem;
+  margin-top: 2rem;
+  align-items: center;
+  padding: 1rem;
+  
+}
+.login-error span{
+  font-size: 2rem;
+  border-radius: 1rem;
+  padding-right: 25rem;
+  padding-left: 25rem;
+  
+}
+.error-login-msg{
+  color: var(--color-danger);
+}
+.sucess-login-msg{
+  color: var(--color-sucess);
+}
+#login-page #login-containner{
+   
+    display: flex;
+    margin: 5rem auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+}
+#img-logo-icon{
+  width: 18rem;
+  padding: 2rem;
+  margin-bottom: 1rem;
+}
+#input{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  justify-content: center;
+    width: 50rem;
+  
+}
+#input input{
+  width: 100%;
+  height: 6rem;
+  margin: 1rem;
+  border: none;
+  margin-top: 2rem;
+  padding-left: 2rem;
+
+  font-size: 1.8rem;
+  font-family: Poppins ;
+  border-radius: 1.5rem;
+  background: var(--color-background);
+  box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
+}
+
+
+#form-login {
+    max-width: 900px;
+    height: 55rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: var(--color-primary);
+    border-radius: 0.8rem;
+    box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.75);
+    
+  }
+  #form-login  h1{
+    font-weight: 400;
+    font-family:  Georgia;
+    
+  }
+
+
+ #login-buttons{
+   margin: 2rem;
+   margin-top: 5rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+  }
+  #login-buttons{
+    border-radius: 2rem;
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+  }
+  #login-buttons input {
+    font-family:Georgia, Poppins ;
+    font-size: 2.5rem;
+  }
+
+  #btn-back{
+    height: 7rem;
+    width: 17rem;
+    border: none;
+    background: var(--color-background);
+    border-radius: 2rem 0rem 0rem 2rem;
+    opacity: 0.75;
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+
+  }
+  #btn-logar{
+    height: 7rem;
+    width: 17rem;
+    border: none;
+    background: var(--color-background);
+    border-radius: 0rem 2rem 2rem 0rem;
+    border-left: 0.5px solid var(--color-primary);
+    opacity: 0.75;
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+    font-family: Georgia;
+    font-size: 2.8rem;
+  }
+  #btn-back:hover,#btn-logar:hover{
+    opacity: 1;
+    cursor: pointer;
+    color: var(--color-special);
+  }
+  #btn-back:active, #btn-logar:active{
+    transition-delay: 0.1s;
+    box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+  }
+
+
+
+  @media(min-width: 800px ) and (min-height: 800px){
+    #form-login{
+      width: 100%;
+    }
+    #login-footer{
+      position:absolute;
+      bottom:0;
+      width: 100%;
+    }
+}

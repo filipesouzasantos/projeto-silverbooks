@@ -39,7 +39,7 @@ class ControllerBook {
         const regex = /[\s.,\/ \-]/;
         let find = req.query.search_query.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase().split(regex)
         console.log()
-        const respo = await ModelBook.find({
+        const respo = await ModelBook.paginate({
             'tags': { '$all': find }
             //$in -all or
         })

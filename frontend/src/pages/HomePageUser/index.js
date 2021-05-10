@@ -12,7 +12,6 @@ import SearchBar from '../../components/SearchBar';
 import BtnDownload from '../../assets/images/icons/BtnDownload.png';
 
 import './styles.css';
-import buttonLogout from '../../components/ButtonLogout';
 
 function HomePageUser(props) {
 

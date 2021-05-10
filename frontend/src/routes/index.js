@@ -28,7 +28,7 @@ function Routes() {
            
             
             <Route path='/download-page/:id' exact component={DownloadPage} />
-            <Route path='/login' exact component={Login} />
+            <Route path='/user/login' exact component={Login} />
             
 
                 <PrivateRoute path='/user/home' exact component={HomePageAdm} />

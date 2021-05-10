@@ -12,6 +12,7 @@ import SearchBar from '../../components/SearchBar';
 import BtnDownload from '../../assets/images/icons/BtnDownload.png';
 
 import './styles.css';
+import buttonLogout from '../../components/ButtonLogout';
 
 function HomePageUser(props) {
 
@@ -33,7 +34,7 @@ function HomePageUser(props) {
             }
             await api.get(url).then(response => {
                 setBooks(response.data);
-                
+
             })
         }
         loadBooks()
@@ -47,9 +48,20 @@ function HomePageUser(props) {
     return (
         <div id='home-page-user'>
 
+
             <Header link='/'>
                 <div id='field-find'>
                     <SearchBar clicke={e => setQuery(e.target.value)} />
+                </div>
+                <div id=''>
+                    {!localStorage.getItem('app-token') ?
+                        <Link to='/user/login'>Loguin</Link>
+                        :
+                        <Link to='/user/home'>Gerenciar</Link>
+
+                    }
+
+
                 </div>
 
             </Header>
@@ -85,7 +97,7 @@ function HomePageUser(props) {
             </div>
 
             <div id="home-page-content" >
-                
+
 
                 <div id='main'>
                     <div id='home-page-label-books'>
@@ -99,15 +111,15 @@ function HomePageUser(props) {
                     <main>
                         <div id='content-main'>
 
-                           
+
                             {
-                                books.docs ?.map(book => (
-                                        <Book key={book._id} titleBook={book.title + " - " + book.author} linkImg={book.imgLink} subDescription={book.subDescription}>
-                                            <Link to={`/download-page/${book._id}`}>
-                                                <img src={BtnDownload} alt='button-download' />
-                                            </Link>
-                                        </Book>
-                                    )) 
+                                books.docs?.map(book => (
+                                    <Book key={book._id} titleBook={book.title + " - " + book.author} linkImg={book.imgLink} subDescription={book.subDescription}>
+                                        <Link to={`/download-page/${book._id}`}>
+                                            <img src={BtnDownload} alt='button-download' />
+                                        </Link>
+                                    </Book>
+                                ))
                             }
 
 
@@ -115,7 +127,7 @@ function HomePageUser(props) {
                     </main>
 
                 </div>
-                
+
 
             </div>
             <div id='footer-main-page'>

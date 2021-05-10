@@ -25,13 +25,13 @@ function Login(props) {
         if (rejex.test(email)) {
             await api.post('/user/login', { email: email, password: password })
                 .then(response => {
-                    
+
                     setLoading('')
                     const { token } = response.data
                     if (token) {
                         localStorage.setItem('app-token', token);
                         props.history.push('/user/home');
-                        
+
                     }
                 }).catch(err => {
                     setLoading('')
@@ -49,7 +49,19 @@ function Login(props) {
 
         <div id="login-page">
 
-            <Header link='/'/>
+            <Header link='/'>
+                
+                    {!localStorage.getItem('app-token') ?
+                        <Link to='/'>Home Page</Link>
+                        :
+                        <Link to='/user/home'>Gerenciar</Link>
+
+                    }
+
+
+
+            </Header>
+
             <div className='login-error'>
                 <span className='error-login-msg'>{error}</span>
                 <span className='sucess-login-msg'>{loading}</span>

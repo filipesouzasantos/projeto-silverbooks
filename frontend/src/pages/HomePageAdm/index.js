@@ -79,29 +79,29 @@ function HomePageAdm() {
                 <button type='button' onClick={initialSatus}>
                     <Filter name='Todos' />
                 </button>
-                <button type='button' onClick={() => setFilter('ROMANCE')}>
+                <button type='button' onClick={() => {setFilter('ROMANCE'); setPage(1)}}>
                     <Filter name='Romance' />
                 </button>
-                <button type='button' onClick={() => setFilter('TERROR')}>
+                <button type='button' onClick={() => {setFilter('TERROR'); setPage(1)}}>
                     <Filter name='Terror' />
                 </button>
-                <button type='button' onClick={() => setFilter('AVENTURA')}>
+                <button type='button' onClick={() => {setFilter('AVENTURA'); setPage(1)}}>
                     <Filter name='Aventura' />
                 </button>
-                <button type='button' onClick={() => setFilter('DISTOPIA')}>
+                <button type='button' onClick={() => {setFilter('DISTOPIA'); setPage(1)}}>
                     <Filter name='Distopia' />
                 </button>
-                <button type='button' onClick={() => setFilter('GAMES')}>
+                <button type='button' onClick={() => {setFilter('GAMES'); setPage(1)}}>
                     <Filter name='Games' />
                 </button>
-                <button type='button' onClick={() => setFilter('INFORMATICA')}>
+                <button type='button' onClick={() => {setFilter('INFORMATICA'); setPage(1)}}>
                     <Filter name='Programação' />
                 </button>
-                <button type='button' onClick={() => setFilter('JOVEM ADULTO')}>
+                <button type='button' onClick={() => {setFilter('JOVEM ADULTO'); setPage(1)}}>
                     <Filter name='Jovem adulto' />
                 </button>
-                <button type='button' onClick={() => setFilter('CRONICAS')}>
-                    <Filter name='Crônicas' />
+                <button type='button' onClick={() => {setFilter('LIGHT NOVEL'); setPage(1)}}>
+                    <Filter name='LIGHT NOVEL' />
                 </button>
             </div>
 

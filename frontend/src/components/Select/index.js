@@ -15,7 +15,7 @@ function Select(props) {
                 <option value='GAMES'>GAMES</option> 
                 <option value='INFORMATICA'>INFORMATICA</option>
                 <option value='JOVEM ADULTO'>JOVEM ADULTO</option>
-                <option value='CRONICAS'>CRONICAS</option>
+                <option value='LIGHT NOVEL'>LIGHT NOVEL</option>
 
             </select>
         </div>

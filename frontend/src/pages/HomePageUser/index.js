@@ -7,12 +7,12 @@ import Footer from '../../components/Footer';
 import Book from '../../components/Book';
 import Filter from '../../components/Filter';
 import SearchBar from '../../components/SearchBar';
-
-//import NotFoundBook from '../../assets/images/notFoundBook.png';
+import Pagination from '../../components/Pagination';
+import NotFoundBook from '../../assets/images/notFoundBook.png';
 import BtnDownload from '../../assets/images/icons/BtnDownload.png';
 
 import './styles.css';
-import Pagination from '../../components/Pagination';
+
 
 function HomePageUser(props) {
 
@@ -33,6 +33,7 @@ function HomePageUser(props) {
             }
             await api.get(url).then(response => {
                 setBooks(response.data);
+                console.log(response.data)
                 setPage(response.data.page);
                 setTotalPages(response.data.totalPages);
 
@@ -75,29 +76,29 @@ function HomePageUser(props) {
                     <button type='button' onClick={initialSatus}>
                         <Filter name='Todos' />
                     </button>
-                    <button type='button' onClick={() => setFilter('ROMANCE')}>
+                    <button type='button' onClick={() => {setFilter('ROMANCE'); setPage(1)}}>
                         <Filter name='Romance' />
                     </button>
-                    <button type='button' onClick={() => setFilter('TERROR')}>
+                    <button type='button' onClick={() => {setFilter('TERROR'); setPage(1)}}>
                         <Filter name='Terror' />
                     </button>
-                    <button type='button' onClick={() => setFilter('AVENTURA')}>
+                    <button type='button' onClick={() => {setFilter('AVENTURA'); setPage(1)}}>
                         <Filter name='Aventura' />
                     </button>
-                    <button type='button' onClick={() => setFilter('DISTOPIA')}>
+                    <button type='button' onClick={() => {setFilter('DISTOPIA'); setPage(1)}}>
                         <Filter name='Distopia' />
                     </button>
-                    <button type='button' onClick={() => setFilter('GAMES')}>
+                    <button type='button' onClick={() => {setFilter('GAMES'); setPage(1)}}>
                         <Filter name='Games' />
                     </button>
-                    <button type='button' onClick={() => setFilter('INFORMATICA')}>
+                    <button type='button' onClick={() => {setFilter('INFORMATICA'); setPage(1)}}>
                         <Filter name='Programação' />
                     </button>
-                    <button type='button' onClick={() => setFilter('JOVEM ADULTO')}>
+                    <button type='button' onClick={() => {setFilter('JOVEM ADULTO'); setPage(1)}}>
                         <Filter name='Jovem adulto' />
                     </button>
-                    <button type='button' onClick={() => setFilter('CRONICAS')}>
-                        <Filter name='Crônicas' />
+                    <button type='button' onClick={() => {setFilter('LIGHT NOVEL'); setPage(1)}}>
+                        <Filter name='LIGHT NOVEL' />
                     </button>
                 </div>
 
@@ -114,13 +115,15 @@ function HomePageUser(props) {
                         <main>
                             <div id='content-main'>
                                 {
-                                    books.docs?.map(book => (
+                                    books.docs? books.docs.map(book => (
                                         <Book key={book._id} titleBook={book.title + " - " + book.author} linkImg={book.imgLink} subDescription={book.subDescription}>
                                             <Link to={`/download-page/${book._id}`}>
                                                 <img src={BtnDownload} alt='button-download' />
                                             </Link>
                                         </Book>
                                     ))
+                                    :
+                                      <img src={NotFoundBook} alt="not found book"></img>
                                 }
                             </div>
                         </main>

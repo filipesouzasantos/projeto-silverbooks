@@ -1,0 +1,55 @@
+#field-pagination{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+   
+
+}
+#list-pagination{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem;
+    border-radius: 1.5rem;
+    
+   
+
+}
+
+#list-pagination li{ 
+    padding: 1rem;
+}
+#list-pagination-top{
+    border: var(--color-special) solid 1px;
+    border-radius: 1rem 0rem 0rem 1rem;
+}
+#list-pagination-bot{
+    border: var(--color-special) solid 1px;
+    border-radius: 0rem 1rem 1rem 0rem;
+}
+#list-pagination-mid{
+    border-top:var(--color-special) solid 1px;
+    border-bottom:var(--color-special) solid 1px;
+    
+}
+#list-pagination li button{
+    font-weight: 500; 
+}
+#list-pagination li span{
+    font-weight: 700;
+    color: var(--color-special)  
+}
+#list-pagination-bot:hover,
+#list-pagination-top:hover{
+    font-weight: 500;
+    cursor: pointer;
+    background-color: var(--color-special);
+    color: white;
+}
+#list-pagination-bot:disabled,
+#list-pagination-top:disabled{
+    background-color:grey;
+    cursor: none;
+}

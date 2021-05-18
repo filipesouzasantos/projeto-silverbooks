@@ -12,6 +12,7 @@ import SearchBar from '../../components/SearchBar';
 import BtnDownload from '../../assets/images/icons/BtnDownload.png';
 
 import './styles.css';
+import Pagination from '../../components/Pagination';
 
 function HomePageUser(props) {
 
@@ -19,6 +20,9 @@ function HomePageUser(props) {
     const [filter, setFilter] = useState('');
     const [query, setQuery] = useState('');
     const [labelFilterBooks] = useState('TODOS OS LIVROS');
+    const [page, setPage] = useState({});
+    const [nextPage, setNextPage] = useState({});
+    const [totalPages, setTotalPages] = useState({});
 
 
 
@@ -29,111 +33,121 @@ function HomePageUser(props) {
             if (query) {
                 url = `/results?search_query=${query}`
             } else {
-                url = `/${filter}`
+                url = `/${filter}?page=${page}`
             }
             await api.get(url).then(response => {
                 setBooks(response.data);
+                console.log(response.data)
+                setPage(response.data.page);
+
+                setTotalPages(response.data.totalPages);
 
             })
         }
         loadBooks()
-    }, [filter, query]);
+    }, [filter, query, page]);
 
     function initialSatus() {
         setFilter('')
         setQuery('')
     }
 
+    const changePage = (index) => {
+        if (index > totalPages) {
+            setPage(index - 1);
+        } else {
+            setPage(index);
+        }
+    }
+
     return (
-        <div id='home-page-user'>
-
-
-            <Header link='/'>
-                <div id='field-find'>
-                    <SearchBar clicke={e => setQuery(e.target.value)} />
-                </div>
-                <div id=''>
-                    {!localStorage.getItem('app-token') ?
-                        <Link to='/user/login'>Loguin</Link>
-                        :
-                        <Link to='/user/home'>Gerenciar</Link>
-
-                    }
-
-
-                </div>
-
-            </Header>
-
-            <div id='filters'>
-                <button type='button' onClick={initialSatus}>
-                    <Filter name='Todos' />
-                </button>
-                <button type='button' onClick={() => setFilter('ROMANCE')}>
-                    <Filter name='Romance' />
-                </button>
-                <button type='button' onClick={() => setFilter('TERROR')}>
-                    <Filter name='Terror' />
-                </button>
-                <button type='button' onClick={() => setFilter('AVENTURA')}>
-                    <Filter name='Aventura' />
-                </button>
-                <button type='button' onClick={() => setFilter('DISTOPIA')}>
-                    <Filter name='Distopia' />
-                </button>
-                <button type='button' onClick={() => setFilter('GAMES')}>
-                    <Filter name='Games' />
-                </button>
-                <button type='button' onClick={() => setFilter('INFORMATICA')}>
-                    <Filter name='Programação' />
-                </button>
-                <button type='button' onClick={() => setFilter('JOVEM ADULTO')}>
-                    <Filter name='Jovem adulto' />
-                </button>
-                <button type='button' onClick={() => setFilter('CRONICAS')}>
-                    <Filter name='Crônicas' />
-                </button>
-            </div>
-
-            <div id="home-page-content" >
-
-
-                <div id='main'>
-                    <div id='home-page-label-books'>
-                        {
-                            !filter ? <h2 >{labelFilterBooks}</h2>
-                                :
-                                <h2 >{filter}</h2>
-                        }
-
+        <>
+            <div id='home-page-user'>
+                <Header link='/'>
+                    <div id='field-find'>
+                        <SearchBar clicke={e => setQuery(e.target.value)} />
                     </div>
-                    <main>
-                        <div id='content-main'>
+                    <div id=''>
+                        {!localStorage.getItem('app-token') ?
+                            <Link to='/user/login'>Loguin</Link>
+                            :
+                            <Link to='/user/home'>Gerenciar</Link>
+                        }
+                    </div>
+
+                </Header>
+
+                <div id='filters'>
+                    <button type='button' onClick={initialSatus}>
+                        <Filter name='Todos' />
+                    </button>
+                    <button type='button' onClick={() => setFilter('ROMANCE')}>
+                        <Filter name='Romance' />
+                    </button>
+                    <button type='button' onClick={() => setFilter('TERROR')}>
+                        <Filter name='Terror' />
+                    </button>
+                    <button type='button' onClick={() => setFilter('AVENTURA')}>
+                        <Filter name='Aventura' />
+                    </button>
+                    <button type='button' onClick={() => setFilter('DISTOPIA')}>
+                        <Filter name='Distopia' />
+                    </button>
+                    <button type='button' onClick={() => setFilter('GAMES')}>
+                        <Filter name='Games' />
+                    </button>
+                    <button type='button' onClick={() => setFilter('INFORMATICA')}>
+                        <Filter name='Programação' />
+                    </button>
+                    <button type='button' onClick={() => setFilter('JOVEM ADULTO')}>
+                        <Filter name='Jovem adulto' />
+                    </button>
+                    <button type='button' onClick={() => setFilter('CRONICAS')}>
+                        <Filter name='Crônicas' />
+                    </button>
+                </div>
+
+                <div id="home-page-content" >
 
 
+                    <div id='main'>
+                        <div id='home-page-label-books'>
                             {
-                                books.docs?.map(book => (
-                                    <Book key={book._id} titleBook={book.title + " - " + book.author} linkImg={book.imgLink} subDescription={book.subDescription}>
-                                        <Link to={`/download-page/${book._id}`}>
-                                            <img src={BtnDownload} alt='button-download' />
-                                        </Link>
-                                    </Book>
-                                ))
+                                !filter ? <h2 >{labelFilterBooks}</h2>
+                                    :
+                                    <h2 >{filter}</h2>
                             }
 
-
                         </div>
-                    </main>
+                        <Pagination page={page} onChangePage={changePage} />
+                        <main>
+                            <div id='content-main'>
+
+
+                                {
+                                    books.docs?.map(book => (
+                                        <Book key={book._id} titleBook={book.title + " - " + book.author} linkImg={book.imgLink} subDescription={book.subDescription}>
+                                            <Link to={`/download-page/${book._id}`}>
+                                                <img src={BtnDownload} alt='button-download' />
+                                            </Link>
+                                        </Book>
+                                    ))
+                                }
+
+
+                            </div>
+                        </main>
+
+                    </div>
+
 
                 </div>
-
+                <div id='footer-main-page'>
+                    <Footer />
+                </div>
 
             </div>
-            <div id='footer-main-page'>
-                <Footer />
-            </div>
-
-        </div>
+        </>
     );
 }
 export default HomePageUser;

@@ -31,6 +31,8 @@ function Login(props) {
                     if (token) {
                         localStorage.setItem('app-token', token);
                         props.history.push('/user/home');
+                        window.location.reload();
+
 
                     }
                 }).catch(err => {
@@ -55,16 +57,13 @@ function Login(props) {
                         <Link to='/'>Home Page</Link>
                         :
                         <Link to='/user/home'>Gerenciar</Link>
-
                     }
-
-
-
             </Header>
 
             <div className='login-error'>
                 <span className='error-login-msg'>{error}</span>
                 <span className='sucess-login-msg'>{loading}</span>
+                {localStorage.getItem('app-token') ?<span className='sucess-login-msg'>PARA ACESSAR O PINEL DE ADMINISTRADOR CLIQUE <Link className='error-login-msg' to='/user/home'>Click Here</Link></span>:<></>}
             </div>
             <div id='login-containner'>
 

@@ -64,7 +64,11 @@ function HomePageUser(props) {
                     </div>
                     <div id=''>
                         {!localStorage.getItem('app-token') ?
-                            <Link to='/user/login'>Loguin</Link>
+                        <>
+                             <Link to='/user/login'>Loguin</Link>
+
+                        </>
+                           
                             :
                             <Link to='/user/home'>Gerenciar</Link>
                         }

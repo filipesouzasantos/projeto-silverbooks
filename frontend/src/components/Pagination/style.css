@@ -1,11 +1,7 @@
-#field-pagination{
-    
+#field-pagination{ 
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1rem;
-   
-
 }
 #list-pagination{
     list-style: none;
@@ -13,9 +9,6 @@
     flex-direction: row;
     padding: 0.5rem;
     border-radius: 1.5rem;
-    
-   
-
 }
 
 #list-pagination li{ 
@@ -32,7 +25,6 @@
 #list-pagination-mid{
     border-top:var(--color-special) solid 1px;
     border-bottom:var(--color-special) solid 1px;
-    
 }
 #list-pagination li button{
     font-weight: 500; 

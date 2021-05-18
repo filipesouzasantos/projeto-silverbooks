@@ -12,6 +12,7 @@ import './styles.css'
 import BtnEdit from '../../assets/images/icons/BtnEdit.png'
 import ButtonLogout from '../../components/ButtonLogout';
 import SearchBar from '../../components/SearchBar';
+import Pagination from '../../components/Pagination';
 
 
 
@@ -21,6 +22,8 @@ function HomePageAdm() {
     const [filter, setFilter] = useState('');
     const [query, setQuery] = useState('');
     const [labelFilterBooks] = useState('Todos os Livros');
+    const [page, setPage] = useState({});
+    const [totalPages, setTotalPages] = useState({});
 
 
     useEffect(() => {
@@ -29,20 +32,29 @@ function HomePageAdm() {
             if (query) {
                 url = `/admin/results?search_query=${query}`
             } else {
-                url = `/admin/listall/${filter}`
+                url = `/admin/listall/${filter}?page=${page}`
             }
             await api.get(url).then(response => {
                 setBooks(response.data);
+                setPage(response.data.page);
+                setTotalPages(response.data.totalPages);
+
             })
         }
         Books();
-    }, [filter, query, books]);
+    }, [filter, query, page]);
 
     function initialSatus() {
         setFilter('')
         setQuery('')
     }
-
+    const changePage = (index) => {
+        if (index > totalPages) {
+            setPage(index - 1);
+        } else {
+            setPage(index);
+        }
+    }
 
     return (
         <div id="home-page-admin" className='contanner'>
@@ -99,15 +111,17 @@ function HomePageAdm() {
                         :
                         <h2 >{filter}</h2>
                 }
+                <Pagination page={page} onChangePage={changePage} />
+
                 <main>
                     {
-                         books.docs?.map(book => (
-                                <Book key={book._id} titleBook={book.title + " - " + book.author} linkImg={book.imgLink} subDescription={book.subDescription}>
-                                    <Link to={`/user/edit/${book._id}`}>
-                                        <img src={BtnEdit} alt='button edit' />
-                                    </Link>
-                                </Book>
-                            )) 
+                        books.docs?.map(book => (
+                            <Book key={book._id} titleBook={book.title + " - " + book.author} linkImg={book.imgLink} subDescription={book.subDescription}>
+                                <Link to={`/user/edit/${book._id}`}>
+                                    <img src={BtnEdit} alt='button edit' />
+                                </Link>
+                            </Book>
+                        ))
                     }
                 </main>
             </div>

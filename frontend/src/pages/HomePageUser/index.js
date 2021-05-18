@@ -23,9 +23,6 @@ function HomePageUser(props) {
     const [page, setPage] = useState({});
     const [totalPages, setTotalPages] = useState({});
 
-
-
-
     useEffect(() => {
         const loadBooks = async () => {
             let url
@@ -36,9 +33,7 @@ function HomePageUser(props) {
             }
             await api.get(url).then(response => {
                 setBooks(response.data);
-                console.log(response.data)
                 setPage(response.data.page);
-
                 setTotalPages(response.data.totalPages);
 
             })
@@ -107,8 +102,6 @@ function HomePageUser(props) {
                 </div>
 
                 <div id="home-page-content" >
-
-
                     <div id='main'>
                         <div id='home-page-label-books'>
                             {
@@ -116,13 +109,10 @@ function HomePageUser(props) {
                                     :
                                     <h2 >{filter}</h2>
                             }
-
                         </div>
-                        <Pagination page={page} onChangePage={changePage} />
+
                         <main>
                             <div id='content-main'>
-
-
                                 {
                                     books.docs?.map(book => (
                                         <Book key={book._id} titleBook={book.title + " - " + book.author} linkImg={book.imgLink} subDescription={book.subDescription}>
@@ -132,19 +122,17 @@ function HomePageUser(props) {
                                         </Book>
                                     ))
                                 }
-
-
                             </div>
                         </main>
 
                     </div>
-
-
                 </div>
+
+                <Pagination page={page} onChangePage={changePage} />
+
                 <div id='footer-main-page'>
                     <Footer />
                 </div>
-
             </div>
         </>
     );

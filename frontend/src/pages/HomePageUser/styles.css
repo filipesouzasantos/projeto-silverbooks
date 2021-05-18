@@ -1,7 +1,6 @@
 #home-page-user{
     width: 100vw;
-    height: 100vh;
-    
+    height: 100vh; 
 }
 button{
     background: none;
@@ -9,13 +8,10 @@ button{
     border: none;
 }
 
-
 #filters{
-    background: var( --color-opacity);
-    
+    background: var( --color-opacity); 
     margin: 0 2rem;
     border-radius: 1rem;
-
     margin-top: 5rem;
     display: flex;
     flex-wrap: wrap;
@@ -26,16 +22,12 @@ button{
     box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
   }
 #home-page-content{
-   
     margin-top: 10rem;
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column; 
     margin-left: 2rem ;
     margin-right: 2rem ;
-
 }
-
 
 #home-page-label-books{
     text-align: center;
@@ -43,28 +35,22 @@ button{
 }
 
 main{
-    margin-bottom: 3rem;
-    
+    margin-bottom: 3rem; 
     border-radius: 1rem;
     
 }
 #not-found-books-img{
     padding: 20rem 2rem;
-    width: 50rem;
-   
+    width: 50rem; 
 }
 
 #footer-main-page{
     margin-top: 20rem;
 }
 @media(min-width: 800px ) {
-
-
     #home-page-content{
-        display: flex;
-        
+        display: flex;  
     }
-   
     
     #adsense1{
         background: var(--color-primary);
@@ -86,18 +72,13 @@ main{
         display: flex;
         align-items: center;
         justify-content: center;
-        
-       
+           
     }
-    
    
     #content-main{
         margin: 0 auto;
         display: flex;
         flex-direction: column;
-        align-items: center;
-       
-        
+        align-items: center;  
     }
-    
-    }
+}

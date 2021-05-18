@@ -21,7 +21,6 @@ function HomePageUser(props) {
     const [query, setQuery] = useState('');
     const [labelFilterBooks] = useState('TODOS OS LIVROS');
     const [page, setPage] = useState({});
-    const [nextPage, setNextPage] = useState({});
     const [totalPages, setTotalPages] = useState({});
 
 

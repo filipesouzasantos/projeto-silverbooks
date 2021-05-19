@@ -5,10 +5,9 @@
 
 https://silverbooks.netlify.app/
 
-Desenvolvida com Node JS no backend e React no forntend com o modelo Padrão REST/JSON para conectar ao Forntend.
+Desenvolvida com Node JS no backend e React no frontend com o modelo Padrão REST/JSON para conectar ao Forntend.
 
-Silver Books é uma aplicação que consiste uma área para o usuario onde ele pode realizar pesquisa de livros e baixa-los e o administrador pode cadastrar,
-excluir adicionar ou editar algum livro.
+Silver Books é uma aplicação que consiste em duas áreas, uma área para o usuario, onde ele pode realizar pesquisa de livros e baixa-los e a outra para o administrador onde ele pode: cadastrar, excluir, adicionar ou editar algum livro.
 
 
 
